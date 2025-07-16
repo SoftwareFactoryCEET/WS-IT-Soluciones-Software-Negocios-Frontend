@@ -81,6 +81,37 @@ namespace GestionVoluntariadoEventosGUI.Servicios
             }
         }
 
+
+        //// Método para crear un nuevo evento (similar a RegisterUserAsync)
+        //public async Task<string?> CreateEventAsync(Event @event)
+        //{
+        //    var jsonContent = new StringContent(JsonSerializer.Serialize(@event), Encoding.UTF8, "application/json");
+
+        //    try
+        //    {
+        //        var response = await _httpClient.PostAsync("api/Events", jsonContent);
+
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            return null; // Éxito
+        //        }
+        //        else
+        //        {
+        //            var errorContent = await response.Content.ReadAsStringAsync();
+        //            return $"Error al crear evento: {response.ReasonPhrase} - {errorContent}";
+        //        }
+        //    }
+        //    catch (HttpRequestException ex)
+        //    {
+        //        return $"Error de conexión: {ex.Message}";
+        //    }
+        //    catch (JsonException ex)
+        //    {
+        //        return $"Error de formato de datos: {ex.Message}";
+        //    }
+        //}
+
+
         // Puedes agregar más métodos para GET, PUT, DELETE si los necesitas en el frontend
 
     }

@@ -85,7 +85,7 @@ namespace GestionVoluntariadoEventosGUI.ViewModels
         }
         private void NavigateToUserCreation()
         {
-            //_navigationService.NavigateTo(new UserCreationViewModel(_apiService, _navigationService));
+            _navigationService.NavigateTo(new UserCreationViewModel(_apiService, _navigationService));
         }
     }
 }
