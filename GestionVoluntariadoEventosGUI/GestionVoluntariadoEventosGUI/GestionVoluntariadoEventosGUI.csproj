@@ -9,7 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <None Remove="Views\Logo1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\Logo1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="assets\docs\terms.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\images\Logo1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

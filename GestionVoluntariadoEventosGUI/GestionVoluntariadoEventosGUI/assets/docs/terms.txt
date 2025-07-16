@@ -1,0 +1,23 @@
+Términos y Condiciones - WorldSkills Colombia
+
+1. Aceptación de los Términos
+Al utilizar esta aplicación, usted acepta cumplir con los términos y condiciones aquí establecidos. Si no está de acuerdo, no utilice la aplicación.
+
+2. Registro de Usuarios
+- Los usuarios deben proporcionar información veraz y completa durante el registro.
+- Los datos personales (nombre, teléfono, correo) serán utilizados únicamente para la gestión de eventos benéficos.
+- La contraseña debe mantenerse confidencial.
+
+3. Uso de la Aplicación
+- La aplicación está destinada a organizadores y voluntarios de eventos benéficos.
+- Los usuarios son responsables de mantener actualizada su información de disponibilidad y contacto.
+- Está prohibido el uso indebido de la aplicación, incluyendo la carga de datos falsos o maliciosos.
+
+4. Privacidad y Seguridad
+- Los datos personales se almacenarán en una base de datos local y no serán compartidos con terceros sin consentimiento.
+- La aplicación implementa medidas de seguridad para proteger la información de los usuarios.
+
+5. Modificaciones
+WorldSkills Colombia se reserva el derecho de modificar estos términos en cualquier momento. Los cambios serán notificados a los usuarios.
+
+Fecha de última actualización: 09/07/2024

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="GestionVoluntariadoEventosGUI.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GestionVoluntariadoEventosGUI.Views"
+             xmlns:passwordBoxHelper="clr-namespace:GestionVoluntariadoEventosGUI.Helpers"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel>
+            <Image
+               Width="100" Height="100" Margin="0,0,0,20"
+               Stretch="Uniform" Source="/Views/Logo1.png"/>
+
+            <TextBlock Text="User" Margin="0,0,0,5"/>
+            <TextBox Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Password" Margin="0,0,0,5"/>
+                    <PasswordBox x:Name="PasswordBox"
+                 passwordBoxHelper:PasswordBoxHelper.BoundPassword="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Margin="0,0,0,10"/>
+                    <CheckBox Grid.Column="1" Content="Show password"
+                       IsChecked="{Binding ShowPassword, Mode=TwoWay}"
+                       VerticalAlignment="Center" Margin="5,20,0,0"/>
+                </StackPanel>
+            </Grid>
+            <TextBlock Text="{Binding Password, Converter={StaticResource SecureStringToStringConverter}, Mode=OneWay}"
+            Visibility="{Binding ShowPassword, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Button Content="Login" Command="{Binding LoginCommand}" Width="80" Height="30" Margin="0,0,10,0"/>
+                <Button Content="Exit" Command="{Binding ExitCommand}" Width="80" Height="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <TextBlock Text="Don't have an account?"/>
+                <Button Content="Create one" Command="{Binding CreateOneCommand}" Style="{StaticResource LinkButton}" Margin="5,0,0,0"/>
+            </StackPanel>
+        </StackPanel>     
+    </Grid>
+</UserControl>

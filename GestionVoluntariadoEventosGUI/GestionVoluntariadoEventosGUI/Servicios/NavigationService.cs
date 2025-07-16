@@ -1,4 +1,5 @@
 ﻿using GestionVoluntariadoEventosGUI.ViewModels;
+using GestionVoluntariadoEventosGUI.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,6 @@ namespace GestionVoluntariadoEventosGUI.Servicios
         {
             _contentControl = contentControl;
         }
-
         public void NavigateTo(BaseViewModel viewModel)
         {
             if (_contentControl.Content is UserControl currentView && currentView.DataContext is BaseViewModel currentViewModel)
@@ -29,16 +29,7 @@ namespace GestionVoluntariadoEventosGUI.Servicios
             _contentControl.DataContext = viewModel; // Establece el DataContext de la vista actual
         }
 
-        // Helper para instanciar la vista correcta para un ViewModel dado
-        private object CreateViewForViewModel(BaseViewModel viewModel)
-        {
-            // Puedes usar reflexión o un mapeo directo para esto
-            // Esto es un ejemplo simple, para un proyecto más grande considera un IoC container
-            if (viewModel is LoginViewModel) return new LoginView();
-            // Agrega más Views aquí
-            return null; // Deberías manejar esto apropiadament
-        }
-
+      
         public void GoBack()
         {
             if (_history.Any())
@@ -47,6 +38,7 @@ namespace GestionVoluntariadoEventosGUI.Servicios
                 _contentControl.Content = CreateViewForViewModel(previousViewModel);
                 _contentControl.DataContext = previousViewModel;
             }
+
             // Si no hay historial, podrías volver a la pantalla de login por defecto o cerrar la app
             else
             {
@@ -57,6 +49,18 @@ namespace GestionVoluntariadoEventosGUI.Servicios
                 ));
             }
         }
+        // Helper para instanciar la vista correcta para un ViewModel dado
+        private object CreateViewForViewModel(BaseViewModel viewModel)
+        {
+            // Puedes usar reflexión o un mapeo directo para esto
+            // Esto es un ejemplo simple, para un proyecto más grande considera un IoC container
+            if (viewModel is LoginViewModel) {
+                
+                return new LoginView(); 
+            }
+            return null; // Deberías manejar esto apropiadamente
+        }
+
 
 
     }
