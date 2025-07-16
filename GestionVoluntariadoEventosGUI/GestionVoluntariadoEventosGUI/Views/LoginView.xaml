@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"  Width="500" >
             <Image
                Width="100" Height="100" Margin="0,0,0,20"
                Stretch="Uniform" Source="/Views/Logo1.png"/>
@@ -25,10 +25,11 @@
                     <PasswordBox x:Name="PasswordBox"
                  passwordBoxHelper:PasswordBoxHelper.BoundPassword="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Margin="0,0,0,10"/>
-                    <CheckBox Grid.Column="1" Content="Show password"
-                       IsChecked="{Binding ShowPassword, Mode=TwoWay}"
-                       VerticalAlignment="Center" Margin="5,20,0,0"/>
+                    
                 </StackPanel>
+                <CheckBox Grid.Column="1" Content="Show password"
+                   IsChecked="{Binding ShowPassword, Mode=TwoWay}"
+                   VerticalAlignment="Center" Margin="5,20,0,0"/>
             </Grid>
             <TextBlock Text="{Binding Password, Converter={StaticResource SecureStringToStringConverter}, Mode=OneWay}"
             Visibility="{Binding ShowPassword, Converter={StaticResource BooleanToVisibilityConverter}}"/>

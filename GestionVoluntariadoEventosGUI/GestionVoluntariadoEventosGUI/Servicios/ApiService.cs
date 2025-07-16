@@ -54,6 +54,33 @@ namespace GestionVoluntariadoEventosGUI.Servicios
             }
         }
 
+        public async Task<string?> RegisterUserAsync(User user)
+        {
+            var jsonContent = new StringContent(JsonSerializer.Serialize(user), Encoding.UTF8, "application/json");
+            try
+            {
+                var response = await _httpClient.PostAsync("api/Users", jsonContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    return null; // Éxito, no hay mensaje de error
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    return $"Error al registrar usuario: {response.ReasonPhrase} - {errorContent}";
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+
+                return $"Error de conexión: {ex.Message}";
+            }
+            catch (JsonException ex)
+            {
+                return $"Error de formato de datos: {ex.Message}";
+            }
+        }
+
         // Puedes agregar más métodos para GET, PUT, DELETE si los necesitas en el frontend
 
     }
