@@ -58,7 +58,15 @@ namespace GestionVoluntariadoEventosGUI.Servicios
                 
                 return new LoginView(); 
             }
-            if (viewModel is UserCreationViewModel) return new UserCreationView();
+            if (viewModel is UserCreationViewModel)
+            {
+                return new UserCreationView();
+            }
+            if (viewModel is TermsAndConditionsViewModel)
+            {
+                return new TermsAndConditionsView();
+            }
+
             return null; // Deberías manejar esto apropiadamente
         }
 
