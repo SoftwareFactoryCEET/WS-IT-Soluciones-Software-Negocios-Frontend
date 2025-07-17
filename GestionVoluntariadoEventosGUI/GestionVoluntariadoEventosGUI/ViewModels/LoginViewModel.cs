@@ -67,7 +67,7 @@ namespace GestionVoluntariadoEventosGUI.ViewModels
             if (user != null)
             {
                 MessageBox.Show($"¡Bienvenido, {user.FullName}!", "Login Exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
-                //_navigationService.NavigateTo(new MainMenuViewModel(_apiService, _navigationService)); // Navegar a la pantalla principal después del login exitoso [cite: 133]
+                _navigationService.NavigateTo(new MainMenuViewModel(_apiService, _navigationService)); // Navegar a la pantalla principal después del login exitoso
             }
             else {
                 MessageBox.Show(errorMessage ?? "Error desconocido al iniciar sesión.", "Error de Login", MessageBoxButton.OK, MessageBoxImage.Error);

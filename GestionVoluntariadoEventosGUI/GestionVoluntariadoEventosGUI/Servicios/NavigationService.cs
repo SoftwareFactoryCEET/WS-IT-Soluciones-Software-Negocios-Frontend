@@ -67,6 +67,11 @@ namespace GestionVoluntariadoEventosGUI.Servicios
                 return new TermsAndConditionsView();
             }
 
+            if (viewModel is MainMenuViewModel)
+            {
+                return new MainMenuView();
+            }
+
             return null; // Deberías manejar esto apropiadamente
         }
 
