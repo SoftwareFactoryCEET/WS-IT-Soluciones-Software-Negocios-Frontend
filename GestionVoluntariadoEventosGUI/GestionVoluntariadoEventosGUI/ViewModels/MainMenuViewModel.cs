@@ -30,7 +30,7 @@ namespace GestionVoluntariadoEventosGUI.ViewModels
 
         private void NavigateToEventCreation()
         {
-            //_navigationService.NavigateTo(new EventCreationViewModel(_apiService, _navigationService));
+            _navigationService.NavigateTo(new EventCreationViewModel(_apiService, _navigationService));
         }
 
         private void Logout()

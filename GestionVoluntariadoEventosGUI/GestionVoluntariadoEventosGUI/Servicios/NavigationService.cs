@@ -71,6 +71,10 @@ namespace GestionVoluntariadoEventosGUI.Servicios
             {
                 return new MainMenuView();
             }
+            if (viewModel is EventCreationViewModel)
+            {
+                return new EventCreationView();
+            }
 
             return null; // Deberías manejar esto apropiadamente
         }
