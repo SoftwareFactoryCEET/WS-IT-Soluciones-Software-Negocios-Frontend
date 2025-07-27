@@ -3,20 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:GestionVoluntariadoEventosGUI"            
              xmlns:converters="clr-namespace:GestionVoluntariadoEventosGUI.Converters"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             StartupUri="MainWindow.xaml"
              >
     <Application.Resources>
+        <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+        </ResourceDictionary.MergedDictionaries>
+
         <converters:SecureStringToStringConverter x:Key="SecureStringToStringConverter"/>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:BirthDateToAgeConverter x:Key="BirthDateToAgeConverter"/>
+        <converters:DateOnlyToDateTimeConverter x:Key="DateOnlyToDateTimeConverter"/>
+        <converters:TimeSpanToNullableTimeSpanConverter x:Key="TimeSpanToNullableTimeSpanConverter"/>
 
         <Style x:Key="LinkButton" TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <TextBlock>
-                     <Hyperlink Command="{TemplateBinding Command}"
-                                CommandParameter="{TemplateBinding CommandParameter}"
-                                TextDecorations="Underline"> <ContentPresenter Content="{TemplateBinding Content}"/>
-                     </Hyperlink>
+                            <Hyperlink Command="{TemplateBinding Command}"
+                                       CommandParameter="{TemplateBinding CommandParameter}"
+                                       TextDecorations="Underline">
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </Hyperlink>
                         </TextBlock>
                     </ControlTemplate>
                 </Setter.Value>
@@ -29,6 +41,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
+    </ResourceDictionary>
     </Application.Resources>
 </Application>
