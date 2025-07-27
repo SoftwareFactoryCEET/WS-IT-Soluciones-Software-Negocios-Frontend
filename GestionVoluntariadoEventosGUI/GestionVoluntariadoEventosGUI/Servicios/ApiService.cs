@@ -111,9 +111,32 @@ namespace GestionVoluntariadoEventosGUI.Servicios
             }
         }
 
-        internal async Task<string> RegisterVolunteerAsync(VolunteerDto volunteerDto)
+        public async Task<string> RegisterVolunteerAsync(VolunteerDto volunteerDto)
         {
-            throw new NotImplementedException();
+            var jsonContent = new StringContent(JsonSerializer.Serialize(volunteerDto), Encoding.UTF8, "application/json");
+
+            try
+            {
+                var response = await _httpClient.PostAsync("api/Volunteers", jsonContent); // Endpoint de VolunteersController
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return null; // Éxito
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    return $"Error al registrar voluntario: {response.ReasonPhrase} - {errorContent}";
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                return $"Error de conexión: {ex.Message}";
+            }
+            catch (JsonException ex)
+            {
+                return $"Error de formato de datos: {ex.Message}";
+            }
         }
 
 
