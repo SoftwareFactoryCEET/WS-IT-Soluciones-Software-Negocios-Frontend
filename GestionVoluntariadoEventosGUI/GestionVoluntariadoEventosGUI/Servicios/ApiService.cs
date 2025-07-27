@@ -1,4 +1,5 @@
 ﻿using GestionVoluntariadoEventosGUI.Models;
+using GestionVoluntariadoEventosGUI.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -108,6 +109,11 @@ namespace GestionVoluntariadoEventosGUI.Servicios
             {
                 return $"Error de formato de datos: {ex.Message}";
             }
+        }
+
+        internal async Task<string> RegisterVolunteerAsync(VolunteerDto volunteerDto)
+        {
+            throw new NotImplementedException();
         }
 
 
