@@ -139,6 +139,91 @@ namespace GestionVoluntariadoEventosGUI.Servicios
             }
         }
 
+        // Nuevo método para obtener todos los voluntarios (necesario para la asignación)
+        public async Task<(List<Volunteer>? Volunteers, string? ErrorMessage)> GetVolunteersAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("api/Volunteers"); // Endpoint de VolunteersController
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var volunteersJson = await response.Content.ReadAsStringAsync();
+                    var volunteers = JsonSerializer.Deserialize<List<Volunteer>>(volunteersJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                    return (volunteers, null);
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    return (null, $"Error al obtener voluntarios: {response.ReasonPhrase} - {errorContent}");
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                return (null, $"Error de conexión: {ex.Message}");
+            }
+            catch (JsonException ex)
+            {
+                return (null, $"Error de formato de datos: {ex.Message}");
+            }
+        }
+
+        // Nuevo método para obtener eventos (necesario para la asignación)
+        public async Task<(List<Event>? Events, string? ErrorMessage)> GetEventsAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("api/Events"); // Endpoint de EventsController
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var eventsJson = await response.Content.ReadAsStringAsync();
+                    var events = JsonSerializer.Deserialize<List<Event>>(eventsJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                    return (events, null);
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    return (null, $"Error al obtener eventos: {response.ReasonPhrase} - {errorContent}");
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                return (null, $"Error de conexión: {ex.Message}");
+            }
+            catch (JsonException ex)
+            {
+                return (null, $"Error de formato de datos: {ex.Message}");
+            }
+        }
+
+        // Nuevo método para asignar voluntario a evento
+        public async Task<string?> AssignVolunteerToEventAsync(int eventId, int volunteerId)
+        {
+            try
+            {
+                var response = await _httpClient.PostAsync($"api/Events/{eventId}/assign-volunteer/{volunteerId}", null); // 
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return null; // Éxito
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    return $"Error al asignar voluntario: {response.ReasonPhrase} - {errorContent}";
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                return $"Error de conexión: {ex.Message}";
+            }
+            catch (JsonException ex)
+            {
+                return $"Error de formato de datos: {ex.Message}";
+            }
+        }
+
 
         // Puedes agregar más métodos para GET, PUT, DELETE si los necesitas en el frontend
 
