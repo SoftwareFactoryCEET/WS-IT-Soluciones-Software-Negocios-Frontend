@@ -17,6 +17,8 @@ namespace GestionVoluntariadoEventosGUI.ViewModels
         // Propiedades y comandos para la pantalla principal irán aquí
         // Por ejemplo, comandos para navegar a la creación de eventos, ver voluntarios, etc.
         public ICommand NavigateToEventCreationCommand { get; }
+        public ICommand NavigateToVolunteerCreationCommand { get; } // Nuevo
+        public ICommand NavigateToVolunteerAssignmentCommand { get; } // Nuevo
         public ICommand LogoutCommand { get; }
 
         public MainMenuViewModel(ApiService apiService, NavigationService navigationService)
@@ -25,8 +27,21 @@ namespace GestionVoluntariadoEventosGUI.ViewModels
             _navigationService = navigationService;
             // Inicializar comandos
             NavigateToEventCreationCommand = new RelayCommand((p) => NavigateToEventCreation());
+            NavigateToVolunteerCreationCommand = new RelayCommand((p) => NavigateToVolunteerCreation()); // Inicializar
+            NavigateToVolunteerAssignmentCommand = new RelayCommand((p) => NavigateToVolunteerAssignment()); // Inicializar
+
             LogoutCommand = new RelayCommand((p) => Logout());
-        }       
+        }
+
+        private void NavigateToVolunteerAssignment()
+        {
+            _navigationService.NavigateTo(new VolunteerAssignmentViewModel(_apiService, _navigationService));
+        }
+
+        private void NavigateToVolunteerCreation()
+        {
+            _navigationService.NavigateTo(new VolunteerCreationViewModel(_apiService, _navigationService));
+        }
 
         private void NavigateToEventCreation()
         {
